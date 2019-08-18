@@ -1,7 +1,7 @@
 SET(pwd ${CMAKE_CURRENT_LIST_DIR})
 
 SET(src "")
-add_executable(QuickBpmTapper main.cpp musicbee.h musicbee.cpp)
+add_executable(QuickBpmTapper main.cpp musicbee.h musicbee.cpp callbacks.cpp callbacks.h)
 
 # musicbee
 IF (WIN32)
