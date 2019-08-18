@@ -1,7 +1,7 @@
 SET(pwd ${CMAKE_CURRENT_LIST_DIR})
 
 SET(src "")
-add_executable(QuickBpmTapper main.cpp)
+add_executable(QuickBpmTapper main.cpp musicbee.h musicbee.cpp)
 
 # musicbee
 IF (WIN32)
@@ -9,6 +9,7 @@ IF (WIN32)
             TARGET ${PROJECT_NAME} POST_BUILD
             COMMAND cmd /c ${CMAKE_SOURCE_DIR}/InstallChangeMusicBee.bat ${CMAKE_SOURCE_DIR}/src ${CMAKE_CURRENT_BINARY_DIR}
     )
+    add_compile_definitions(MUSICBEE)
 ENDIF ()
 
 add_custom_command(

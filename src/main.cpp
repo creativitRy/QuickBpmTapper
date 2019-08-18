@@ -1,8 +1,10 @@
 #include <gtk/gtk.h>
 #include <cstdlib>
 #include <iostream>
+#include "musicbee.h"
 
 static gboolean delete_event(GtkWidget *widget, GdkEvent *event, gpointer data) {
+    bpm::try_set_bpm(100);
     // true to stop delete_event propagation
     return false;
 }
