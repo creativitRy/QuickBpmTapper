@@ -3,21 +3,26 @@
 //
 
 #include "callbacks.h"
+#include "calculator.h"
+#include "musicbee.h"
 
 void bpm::tap_clicked(GtkButton *button, gpointer data) {
-    g_print("tap\n");
+    bpm::tap();
 }
 
 void bpm::undo_clicked(GtkButton *button, gpointer data) {
     g_print("undo\n");
+    bpm::undo();
 }
 
 void bpm::reset_clicked(GtkButton *button, gpointer data) {
     g_print("reset\n");
+    bpm::reset();
 }
 
 void bpm::musicbee_clicked(GtkButton *button, gpointer data) {
     g_print("musicbee\n");
+    bpm::try_set_bpm(bpm::get_bpm());
 }
 
 gboolean bpm::key_pressed(GtkWidget *widget, GdkEventKey *event, gpointer data) {

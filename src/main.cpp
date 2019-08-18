@@ -1,11 +1,10 @@
 #include <gtk/gtk.h>
 #include <cstdlib>
 #include <iostream>
-#include "musicbee.h"
 #include "callbacks.h"
+#include "calculator.h"
 
 static gboolean delete_event(GtkWidget *widget, GdkEvent *event, gpointer data) {
-    bpm::try_set_bpm(100);
     // true to stop delete_event propagation
     return false;
 }
@@ -33,6 +32,10 @@ int main(int argc, char **argv) {
     g_signal_connect(window, "destroy", G_CALLBACK(destroy), nullptr);
     gtk_widget_add_events(window, GDK_KEY_PRESS_MASK);
     g_signal_connect(window, "key_press_event", G_CALLBACK(bpm::key_pressed), nullptr);
+
+    auto bpm_label = GTK_LABEL(gtk_builder_get_object(builder, "bpm_label"));
+    auto taps_label = GTK_LABEL(gtk_builder_get_object(builder, "taps_label"));
+    bpm::init(bpm_label, taps_label);
 
     auto tap_button = GTK_BUTTON(gtk_builder_get_object(builder, "tap_button"));
     g_signal_connect(tap_button, "button-press-event", G_CALLBACK(bpm::tap_clicked), nullptr);
