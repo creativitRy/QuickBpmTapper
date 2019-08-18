@@ -1,8 +1,10 @@
 # Quick BPM Tapper
 
+![](https://i.imgur.com/ssoCDs9.jpg)
+
 Lightweight BPM tapper for your music needs.
 
-Created as a practice learning GTK3 and C++.
+Created in one boring night to learn GTK3 and MSYS2.
 
 ### Features
 
