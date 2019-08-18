@@ -28,16 +28,19 @@ void update_labels() {
     if ((num_taps - num_ignored_taps) == 0)
         gtk_label_set_text(bpm_label, "0");
     else
-        gtk_label_set_text(bpm_label, std::to_string((int) ((sum_bpm / (num_taps - num_ignored_taps)) + 0.5)).c_str());
+        gtk_label_set_text(bpm_label, std::to_string(bpm::get_bpm()).c_str());
 
     std::stringstream ss;
     ss << "Taps: " << num_taps;
     gtk_label_set_text(taps_label, ss.str().c_str());
 }
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "bugprone-incorrect-roundings"
 int bpm::get_bpm() {
-    return 0;
+    return (int) ((sum_bpm / (num_taps - num_ignored_taps)) + 0.5);
 }
+#pragma clang diagnostic pop
 
 void bpm::tap() {
     auto curr_tap = std::chrono::high_resolution_clock::now();
